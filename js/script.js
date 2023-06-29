@@ -50,3 +50,16 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 // console.log(5);
+
+//------------------------------------------------------------------------------------------------------------//
+
+//Seleccionar elementos y asociar eventos
+
+const btnEnviar = document.querySelector(".boton--primario");
+btnEnviar.addEventListener("click", function (event) {
+  console.log(event);
+  event.preventDefault(); //? Hace que al momento de enviar un submit, no se recargue la página
+  console.log("Enviando formulario");
+});
+
+//------------------------------------------------------------------------------------------------------------//
