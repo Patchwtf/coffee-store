@@ -33,20 +33,20 @@ navegacion.appendChild(nuevoEnlace);
 
 //------------------------------------------------------------------------------------------------------------//
 // Eventos
-console.log(1);
+// console.log(1);
 
 window.addEventListener("load", function () {
   //Load espera a que el js y los archivos que dependen del HTML esten listos
-  console.log(2);
+  // console.log(2);
 });
 
 window.onload = function () {
-  console.log(3);
+  // console.log(3);
 };
 
 document.addEventListener("DOMContentLoaded", function () {
   //Load espera a que el HTML este listo
-  console.log(4);
+  // console.log(4);
 });
 
-console.log(5);
+// console.log(5);
