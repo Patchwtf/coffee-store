@@ -63,3 +63,23 @@ btnEnviar.addEventListener("click", function (event) {
 });
 
 //------------------------------------------------------------------------------------------------------------//
+//Eventos de los inputs y text area
+
+const datos = {
+  nombre: "",
+  email: "",
+  mensaje: "",
+};
+
+const nombreInput = document.querySelector("#nombre");
+const emailInput = document.querySelector("#email");
+const msgInput = document.querySelector("#mensaje");
+
+nombreInput.addEventListener("input", readText);
+emailInput.addEventListener("input", readText);
+msgInput.addEventListener("input", readText);
+
+function readText(event) {
+  datos[event.target.id] = event.target.value;
+  console.log(datos);
+}
