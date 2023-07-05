@@ -55,12 +55,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
 //Seleccionar elementos y asociar eventos
 
-const btnEnviar = document.querySelector(".boton--primario");
-btnEnviar.addEventListener("click", function (event) {
-  console.log(event);
-  event.preventDefault(); //? Hace que al momento de enviar un submit, no se recargue la página
-  console.log("Enviando formulario");
-});
+// const btnEnviar = document.querySelector(".boton--primario");
+// btnEnviar.addEventListener("click", function (event) {
+//   console.log(event);
+//   event.preventDefault(); //? Hace que al momento de enviar un submit, no se recargue la página
+//   console.log("Enviando formulario (Click)");
+// });
 
 //------------------------------------------------------------------------------------------------------------//
 //Eventos de los inputs y text area
@@ -81,5 +81,59 @@ msgInput.addEventListener("input", readText);
 
 function readText(event) {
   datos[event.target.id] = event.target.value;
-  console.log(datos);
+  // console.log(datos);
+}
+
+//------------------------------------------------------------------------------------------------------------//
+
+//Evento de submit
+
+const formulario = document.querySelector(".formulario");
+
+formulario.addEventListener("submit", function (event) {
+  event.preventDefault(); //? Hace que al momento de enviar un submit, no se recargue la página
+
+  // Validar formulario
+
+  const { nombre, email, mensaje } = datos;
+
+  if (nombre === "" || email === "" || mensaje === "") {
+    mostrarError("Todos los campos son obligatorios");
+    return; //corta la ejecución del codigo
+  }
+
+  // Envioar formulario
+  console.log("Enviando formulario (Submit)");
+  mostrarExito("Se enviaron los datos correctamente");
+});
+
+// Mostarar un error en pantalla
+
+function mostrarError(mensaje) {
+  document.querySelector(".formulario .exito") ? document.querySelector(".formulario .exito").remove() : null;
+  document.querySelector(".formulario .error") ? document.querySelector(".formulario .error").remove() : null;
+
+  const error = document.createElement("P");
+  error.textContent = mensaje;
+  error.classList.add("error");
+  formulario.appendChild(error);
+
+  setTimeout(() => {
+    error.remove();
+  }, 5000);
+}
+
+//eliminar mensaje
+function mostrarExito(mensaje) {
+  document.querySelector(".formulario .error") ? document.querySelector(".formulario .error").remove() : null;
+  document.querySelector(".formulario .exito") ? document.querySelector(".formulario .exito").remove() : null;
+
+  const exito = document.createElement("P");
+  exito.textContent = mensaje;
+  exito.classList.add("exito");
+  formulario.appendChild(exito);
+
+  setTimeout(() => {
+    exito.remove();
+  }, 5000);
 }
